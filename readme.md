@@ -118,6 +118,23 @@ Local requirements:
 
 ---
 
+### `deletesite` - Deletes a Valet site and database
+
+If you used `newsite` to quickly spin up a new Silverstripe site to test/try something, you can quickly delete it by running:
+````
+deletesite NAMEOFSITE
+````
+This will then instantly:
+1. Unlink the site directory from Valet.
+2. Delete the site's directory.
+3. Delete the site's database.
+
+Requirements:
+* Laravel Valet
+* Database server (e.g. DBngin)
+
+---
+
 ### `setupsite` - Sets up an existing Silverstripe site in Valet
 
 If you have an __existing__ Silverstripe site that you'd like to get up and running in Valet, this script will take care of that by: adding the site to Valet, setting up the `.env` and downloading the assets and database from the live site.
@@ -132,16 +149,18 @@ If you have an __existing__ Silverstripe site that you'd like to get up and runn
 The script will ask:
 1. For a name for the site, e.g. `myexamplesite` (Will default to the provided SSH username) 
 2. Which version of Silverstripe the site is (e.g. 3 or 4)
-3. Which PHP version the site requires.
+3. Which PHP version the site requires. (Defaults to version set in `ssscripts.conf`)
 
 Then it automatically:
 1. Links this directory as a Laravel Valet site. (`valet link SITENAME`)
-2. Creates a new database for the site in your local database server.
-3. Creates a `.env` file prefilled with the local database details.
-4. Runs `ssdownload` to get the site database and assets from the live site.
+2. Sets Valet to use the desired PHP version.
+3. Runs `composer install` to download required packages.
+4. Creates a new database for the site in your local database server.
+5. Creates a `.env` file prefilled with the local database details. (Or a `_ss_environment.php` for a Silverstripe 3 site.)
+6. Runs `ssdownload` to get the site database and assets from the live site.
 7. Gives the site an SSL cert using `valet secure`
 8. Opens the local site URL in the browser.
-9. Opens the site root in VS Code.
+9. Opens the site root in your editor ready for editing. (Customisable in `ssscripts.conf`)
 
 Local requirements:
 * Laravel Valet
@@ -149,21 +168,3 @@ Local requirements:
 * `composer`
 
 Also works with Silverstripe 3 sites, just make sure you have PHP 7.3 installed.
-
----
-
-### `deletesite` - Deletes a Valet site and database
-
-If you used `newsite` to quickly spin up a new Silverstripe site to test/try something, you can quickly delete it by running:
-````
-deletesite NAMEOFSITE
-````
-This will then instantly:
-1. Unlink the site directory from Valet.
-2. Delete the site's directory.
-3. Delete the site's database.
----
-
-Requirements:
-* Laravel Valet
-* Database server (e.g. DBngin)
