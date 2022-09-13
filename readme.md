@@ -17,7 +17,7 @@ A handful of command line scripts to aid Silverstripe development (especially wh
     cd ~/Sites/_SS-SCRIPTS
     chmod u+x *.sh
     ````
-2. Copy `sssscripts.conf.example` to `sssscripts.conf` and customise as required.
+2. Copy `ssscripts.conf.example` to `ssscripts.conf` and customise as required.
 3. Add aliases to the scripts, so they'll work anywhere, e.g. if using ZSH on mac OS:
     * Create/edit `~/.zshrc` and add the following, adjusting the path based on where you checked out the repo in step 1:
     ````bash
