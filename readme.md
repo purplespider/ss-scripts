@@ -1,6 +1,6 @@
 # Silverstripe Development Scripts
 
-A handful of command line scripts to aid Silverstripe development (especially when using Laravel Valet as your dev environment):
+A handful of shell scripts to aid Silverstripe development (especially when using [Laravel Valet](https://laravel.com/docs/9.x/valet) as your dev environment):
 
 * `ssdownload` - Download content (assets and database) from a live Silverstripe site
 * `launch` - Open dev site URL in browser
