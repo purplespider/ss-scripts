@@ -80,6 +80,13 @@ echo '========================'
 rm download.sspak
 sleep 0.2s
 
+echo ' '
+echo '========================'
+echo '** Performing dev/build:'
+echo '========================'
+
+valet php vendor/silverstripe/framework/cli-script.php dev/build flush=1 
+
 # Output time taken
 echo ' '
 echo "$USERNAME - Done in $((($(date +%s)-$start)/60)) minutes ($((($(date +%s)-$start))) secs)"
